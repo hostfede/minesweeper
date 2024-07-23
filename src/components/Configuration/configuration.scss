@@ -1,0 +1,22 @@
+.config-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  input {
+    font-size: 15px;
+  }
+
+  select {
+    font-size: 15px;
+  }
+
+  span {
+    font-size: 17px;
+  }
+}
