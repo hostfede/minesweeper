@@ -25,7 +25,6 @@ function RecordsList() {
       <table>
         <thead>
           <tr>
-            <th>ID</th>
             <th>Name</th>
             <th>Difficulty</th>
             <th>Start</th>
@@ -37,7 +36,6 @@ function RecordsList() {
         <tbody>
           {records.map((record, index) => (
             <tr key={index}>
-              <td>{record.id}</td>
               <td>{record.name}</td>
               <td>{record.difficulty}</td>
               <td>
