@@ -1,0 +1,39 @@
+.nav-bar {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+.nav-item {
+  display: flex;
+  padding: 5px;
+  row-gap: 5px;
+  justify-content: center;
+  border-radius: 5px;
+  align-items: center;
+  width: fit-content;
+  color: #ffffff;
+  font-size: 10px;
+  background-color: #b89441;
+
+  &:hover {
+    cursor: pointer;
+    opacity: 0.8;
+    transition: all;
+
+    transition-duration: 500ms;
+    transform: scale(1.1);
+  }
+
+  span {
+    font-size: 18px;
+    font-weight: 600;
+    color: #ffffff;
+  }
+}
