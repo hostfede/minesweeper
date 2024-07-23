@@ -5,7 +5,6 @@ function Records() {
   return (
     <div>
       <Header />
-
       <RecordsList />
     </div>
   );

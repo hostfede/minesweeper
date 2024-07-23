@@ -1,3 +1,5 @@
+import { MINES_STYLES } from './const';
+
 const initialCell = {
   isMined: false,
   isHidden: true,
@@ -84,4 +86,24 @@ export function checkWin(board) {
   return !board.some((row) => {
     return row.some((cell) => !cell.isMined && cell.isHidden);
   });
+}
+
+export function mineStyle(style) {
+  switch (style) {
+    case MINES_STYLES.HEART: {
+      return '💖';
+    }
+
+    case MINES_STYLES.DIAMOND: {
+      return '💎';
+    }
+
+    case MINES_STYLES.STAR: {
+      return '⭐';
+    }
+
+    default: {
+      return '💣';
+    }
+  }
 }

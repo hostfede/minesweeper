@@ -6,6 +6,7 @@ import Cell from './Cell';
 import { formatSecMili } from '../../utils/time';
 import './board.scss';
 import { useConfig } from '../../hooks/useConfig';
+import { mineStyle } from '../../utils/board';
 
 function Board() {
   const { board, uncoverCell, flagCell, gameStatus, flags, mines, resetGame } =
@@ -37,7 +38,10 @@ function Board() {
         {gameStatus === GAME_STATUS.PLAYING && (
           <div className="game-status">
             <span>🚩{flags}</span>
-            <span>💣{mines}</span>
+            <span>
+              {mineStyle(config.mineStyle)}
+              {mines}
+            </span>
             <span>⏱️{formatSecMili(seconds, milliseconds)}</span>
           </div>
         )}
@@ -56,6 +60,7 @@ function Board() {
               isMined={cell.isMined}
               isHidden={cell.isHidden}
               minesAround={cell.minesAround}
+              mineStyle={mineStyle(config.mineStyle)}
               onClick={() => {
                 if (gameStatus === GAME_STATUS.PLAYING) {
                   uncoverCell({

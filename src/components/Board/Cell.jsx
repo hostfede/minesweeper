@@ -7,6 +7,7 @@ function Cell({
   minesAround,
   onClick,
   onRightClick,
+  mineStyle,
 }) {
   let value;
   let className = 'cell';
@@ -18,7 +19,7 @@ function Cell({
     className += ' revealed';
     if (isMined) {
       className += ' mined';
-      value = '💣';
+      value = mineStyle;
     } else {
       className += ` mines-around-${minesAround}`;
       value = minesAround || '';
