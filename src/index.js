@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './App';
 import Records from './pages/Records';
 import Configuration from './pages/Configuration';
+import { ConfigProvider } from './context/config';
 
 const router = createBrowserRouter([
   {
@@ -21,7 +22,7 @@ const router = createBrowserRouter([
 
 const root = createRoot(document.getElementById('root'));
 root.render(
-  <>
+  <ConfigProvider>
     <RouterProvider router={router} />
-  </>,
+  </ConfigProvider>,
 );

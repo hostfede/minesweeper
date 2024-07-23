@@ -13,10 +13,10 @@ function useGameReducer() {
     });
   }
 
-  function uncoverCell({ row, col }) {
+  function uncoverCell({ row, col, config }) {
     dispatch({
       type: GAME_ACTIONS.UNCOVER_CELL,
-      payload: { row, col },
+      payload: { row, col, config },
     });
   }
 

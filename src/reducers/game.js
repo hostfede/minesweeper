@@ -26,7 +26,6 @@ export const initialState = JSON.parse(
 
 function updateLocalStorage(state) {
   window.localStorage.setItem('state', JSON.stringify(state));
-  console.log('state updated: ', state);
 }
 
 export function gameReducer(state, action) {
@@ -47,7 +46,7 @@ export function gameReducer(state, action) {
     }
 
     case GAME_ACTIONS.UNCOVER_CELL: {
-      const { row, col } = payload;
+      const { row, col, config } = payload;
       // const newState = structuredClone(state);
 
       if (newState.board[row][col].isMined) {
@@ -63,8 +62,7 @@ export function gameReducer(state, action) {
         newState.endTime = new Date();
 
         addRecord({
-          id: 1,
-          name: 'Juan',
+          name: config.name,
           difficulty: newState.difficulty,
           startTime: newState.startTime,
           endTime: newState.endTime,
@@ -94,8 +92,7 @@ export function gameReducer(state, action) {
         }
 
         addRecord({
-          id: 1,
-          name: 'Juan',
+          name: config.name,
           difficulty: newState.difficulty,
           startTime: newState.startTime,
           endTime: newState.endTime,

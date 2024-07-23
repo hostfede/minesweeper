@@ -5,12 +5,14 @@ import { GAME_STATUS } from '../../utils/const';
 import Cell from './Cell';
 import { formatSecMili } from '../../utils/time';
 import './board.scss';
+import { useConfig } from '../../hooks/useConfig';
 
 function Board() {
   const { board, uncoverCell, flagCell, gameStatus, flags, mines, resetGame } =
     useGame();
   const { seconds, milliseconds, startTimer, stopTimer, resetTimer } =
     useTimer();
+  const { config } = useConfig();
 
   useEffect(() => {
     if (gameStatus === GAME_STATUS.PLAYING) {
@@ -56,7 +58,11 @@ function Board() {
               minesAround={cell.minesAround}
               onClick={() => {
                 if (gameStatus === GAME_STATUS.PLAYING) {
-                  uncoverCell({ row: rowIndex, col: colIndex });
+                  uncoverCell({
+                    row: rowIndex,
+                    col: colIndex,
+                    config: config,
+                  });
                 }
               }}
               onRightClick={() => {
