@@ -66,50 +66,50 @@ function DifficultySelector() {
         </div>
       )}
 
-      {difficulty === GAME_DIFFICULTY.CUSTOM && (
-        <div className="custom-settings">
-          <div className="custom-input">
-            <label htmlFor="rows">Rows</label>
-            <input
-              type="number"
-              placeholder="Rows"
-              value={customRows}
-              onChange={(e) => {
-                setCustomRows(Number(e.target.value));
-                setState('pending');
-              }}
-            />
+      {difficulty === GAME_DIFFICULTY.CUSTOM &&
+        gameStatus !== GAME_STATUS.PLAYING && (
+          <div className="custom-settings">
+            <div className="custom-input">
+              <span>Rows</span>
+              <input
+                type="number"
+                placeholder="Rows"
+                value={customRows}
+                onChange={(e) => {
+                  setCustomRows(Number(e.target.value));
+                  setState('pending');
+                }}
+              />
+            </div>
+            <div className="custom-input">
+              <span>Columns</span>
+              <input
+                type="number"
+                placeholder="Columns"
+                value={customCols}
+                onChange={(e) => {
+                  setCustomCols(Number(e.target.value));
+                  setState('pending');
+                }}
+              />
+            </div>
+            <div className="custom-input">
+              <span>Mines</span>
+              <input
+                type="number"
+                placeholder="Mines"
+                value={customMines}
+                onChange={(e) => {
+                  setCustomMines(Number(e.target.value));
+                  setState('pending');
+                }}
+              />
+            </div>
+            <div className="custom-set">
+              <button onClick={handleCustomDifficulty}>Set custom</button>
+            </div>
           </div>
-          <div className="custom-input">
-            <label htmlFor="columns">Columns</label>
-            <input
-              type="number"
-              placeholder="Columns"
-              value={customCols}
-              onChange={(e) => {
-                setCustomCols(Number(e.target.value));
-                setState('pending');
-              }}
-            />
-          </div>
-          <div className="custom-input">
-            <label htmlFor="mines">Mines</label>
-            <input
-              type="number"
-              placeholder="Mines"
-              value={customMines}
-              onChange={(e) => {
-                setCustomMines(Number(e.target.value));
-                setState('pending');
-              }}
-            />
-          </div>
-          <div className="custom-set">
-            <button onClick={handleCustomDifficulty}>Set custom</button>
-          </div>
-          <div></div>
-        </div>
-      )}
+        )}
       {state === 'error' && <p className="error-msg">{errorMsg}</p>}
       {state === 'ok' && <p className="ok-msg">Difficulty set!</p>}
       {gameStatus !== GAME_STATUS.PLAYING && (
