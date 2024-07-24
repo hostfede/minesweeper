@@ -19,10 +19,6 @@ function Board() {
     if (gameStatus === GAME_STATUS.PLAYING) {
       startTimer();
     } else {
-      stopTimer();
-    }
-
-    if (gameStatus === GAME_STATUS.STOPPED) {
       resetTimer();
     }
   }, [gameStatus]);

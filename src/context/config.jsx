@@ -13,7 +13,6 @@ export function ConfigProvider({ children }) {
       mineStyle: 'default',
     },
   );
-  console.log(config);
 
   function setName(name) {
     const newConfig = structuredClone(config);

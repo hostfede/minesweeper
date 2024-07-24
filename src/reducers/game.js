@@ -20,8 +20,8 @@ export const initialState = JSON.parse(
   gameStatus: GAME_STATUS.STOPPED,
   flags: DEFAULT_MINES,
   difficulty: GAME_DIFFICULTY.NORMAL,
-  startTime: new Date(),
-  endTime: new Date(),
+  startTime: null,
+  endTime: null,
 };
 
 function updateLocalStorage(state) {
@@ -67,11 +67,14 @@ export function gameReducer(state, action) {
           startTime: newState.startTime,
           endTime: newState.endTime,
           timeSpend: getDifferenceInSeconds(
-            newState.startTime,
+            new Date(newState.startTime),
             newState.endTime,
           ),
           gameStatus: newState.gameStatus,
         });
+
+        newState.endTime = null;
+        newState.startTime = null;
 
         updateLocalStorage(newState);
         return newState;
@@ -97,11 +100,15 @@ export function gameReducer(state, action) {
           startTime: newState.startTime,
           endTime: newState.endTime,
           timeSpend: getDifferenceInSeconds(
-            newState.startTime,
+            new Date(newState.startTime),
             newState.endTime,
           ),
           gameStatus: newState.gameStatus,
         });
+
+        newState.endTime = null;
+        newState.startTime = null;
+
         updateLocalStorage(newState);
         return newState;
       } else {
