@@ -9,6 +9,7 @@ import {
   GAME_STATUS,
 } from '../utils/const';
 import { getDifferenceInSeconds } from '../utils/time';
+import { deepClone } from '../utils/utils';
 
 export const initialState = JSON.parse(
   window.localStorage.getItem('state'),
@@ -30,7 +31,7 @@ function updateLocalStorage(state) {
 
 export function gameReducer(state, action) {
   const { type, payload } = action;
-  const newState = structuredClone(state);
+  const newState = deepClone(state);
 
   switch (type) {
     case GAME_ACTIONS.START_GAME: {
