@@ -59,19 +59,19 @@ export function gameReducer(state, action) {
         }
 
         newState.gameStatus = GAME_STATUS.LOSE;
-        // newState.endTime = new Date();
+        newState.endTime = new Date();
 
-        // addRecord({
-        //   name: config.name,
-        //   difficulty: newState.difficulty,
-        //   startTime: newState.startTime,
-        //   endTime: newState.endTime,
-        //   timeSpend: getDifferenceInSeconds(
-        //     new Date(newState.startTime),
-        //     newState.endTime,
-        //   ),
-        //   gameStatus: newState.gameStatus,
-        // });
+        addRecord({
+          name: config.name,
+          difficulty: newState.difficulty,
+          startTime: newState.startTime,
+          endTime: newState.endTime,
+          timeSpend: getDifferenceInSeconds(
+            new Date(newState.startTime),
+            newState.endTime,
+          ),
+          gameStatus: newState.gameStatus,
+        });
 
         newState.endTime = null;
         newState.startTime = null;
