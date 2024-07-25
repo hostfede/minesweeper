@@ -1,9 +1,12 @@
-.board-row {
-  display: flex;
-  gap: 2px;
-  padding-bottom: 2px;
+.board {
+  /* Arriba | Derecha | Abajo | Izquierda */
+  margin: 0 30px 30px 30px;
+  .board-row {
+    display: flex;
+    gap: 2px;
+    padding-bottom: 2px;
+  }
 }
-
 .container {
   display: flex;
   flex-direction: column;

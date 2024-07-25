@@ -11,8 +11,7 @@ import { mineStyle } from '../../utils/board';
 function Board() {
   const { board, uncoverCell, flagCell, gameStatus, flags, mines, resetGame } =
     useGame();
-  const { seconds, milliseconds, startTimer, stopTimer, resetTimer } =
-    useTimer();
+  const { seconds, milliseconds, startTimer, resetTimer } = useTimer();
   const { config } = useConfig();
 
   useEffect(() => {
@@ -47,34 +46,36 @@ function Board() {
           </button>
         </div>
       </div>
-      {board.map((row, rowIndex) => (
-        <div key={rowIndex} className="board-row">
-          {row.map((cell, colIndex) => (
-            <Cell
-              key={`${rowIndex}-${colIndex}`}
-              isFlagged={cell.isFlagged}
-              isMined={cell.isMined}
-              isHidden={cell.isHidden}
-              minesAround={cell.minesAround}
-              mineStyle={mineStyle(config.mineStyle)}
-              onClick={() => {
-                if (gameStatus === GAME_STATUS.PLAYING) {
-                  uncoverCell({
-                    row: rowIndex,
-                    col: colIndex,
-                    config: config,
-                  });
-                }
-              }}
-              onRightClick={() => {
-                if (gameStatus === GAME_STATUS.PLAYING) {
-                  flagCell({ row: rowIndex, col: colIndex });
-                }
-              }}
-            />
-          ))}
-        </div>
-      ))}
+      <div className="board">
+        {board.map((row, rowIndex) => (
+          <div key={rowIndex} className="board-row">
+            {row.map((cell, colIndex) => (
+              <Cell
+                key={`${rowIndex}-${colIndex}`}
+                isFlagged={cell.isFlagged}
+                isMined={cell.isMined}
+                isHidden={cell.isHidden}
+                minesAround={cell.minesAround}
+                mineStyle={mineStyle(config.mineStyle)}
+                onClick={() => {
+                  if (gameStatus === GAME_STATUS.PLAYING) {
+                    uncoverCell({
+                      row: rowIndex,
+                      col: colIndex,
+                      config: config,
+                    });
+                  }
+                }}
+                onRightClick={() => {
+                  if (gameStatus === GAME_STATUS.PLAYING) {
+                    flagCell({ row: rowIndex, col: colIndex });
+                  }
+                }}
+              />
+            ))}
+          </div>
+        ))}
+      </div>
       {gameStatus === GAME_STATUS.WIN && (
         <div className="message you-won">You won!</div>
       )}
