@@ -8,6 +8,18 @@ export function validateMines(rows, cols, mines) {
     return `The minimum number of columns is 1.`;
   }
 
+  if (rows > 50) {
+    return `The maximum number of rows is 50.`;
+  }
+
+  if (cols > 50) {
+    return `The maximum number of cols is 50.`;
+  }
+
+  if (cols < 1) {
+    return `The minimum number of columns is 1.`;
+  }
+
   if (mines < 1) {
     return `The minimum number of mines is 1.`;
   }
