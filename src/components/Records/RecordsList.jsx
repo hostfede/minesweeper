@@ -10,6 +10,7 @@ function RecordsList() {
     setRecords(getRecords(order));
   }, [order]);
 
+  if (records.length === 0) return <div>No records yet</div>;
   return (
     <div className="records-list">
       <div className="order-by">
@@ -21,7 +22,6 @@ function RecordsList() {
           <option value="timeEnd">Time end</option>
         </select>
       </div>
-
       <table>
         <thead>
           <tr>
